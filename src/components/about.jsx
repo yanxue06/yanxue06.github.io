@@ -12,23 +12,23 @@ export default function About() {
   
   // Gallery images array
   const galleryImages = [
-    '/images/gallery/g1.png',
-    '/images/gallery/g2.png',
-    '/images/gallery/g3.png',
-    '/images/gallery/g4.png',
-    '/images/gallery/g5.png',
-    '/images/gallery/g6.png',
-    '/images/gallery/g7.png',
-    '/images/gallery/g8.png',
-    '/images/gallery/g9.png',
-    '/images/gallery/g10.png',
-    '/images/gallery/g11.png',
-    '/images/gallery/g12.png',
-    '/images/gallery/g13.png',
-    '/images/gallery/g14.png',
-    '/images/gallery/g15.png',
-    '/images/gallery/g16.png',
-    '/images/gallery/g17.png'
+    '/images/gallery/g1.webp',
+    '/images/gallery/g2.webp',
+    '/images/gallery/g3.webp',
+    '/images/gallery/g4.webp',
+    '/images/gallery/g5.webp',
+    '/images/gallery/g6.webp',
+    '/images/gallery/g7.webp',
+    '/images/gallery/g8.webp',
+    '/images/gallery/g9.webp',
+    '/images/gallery/g10.webp',
+    '/images/gallery/g11.webp',
+    '/images/gallery/g12.webp',
+    '/images/gallery/g13.webp',
+    '/images/gallery/g14.webp',
+    '/images/gallery/g15.webp',
+    '/images/gallery/g16.webp',
+    '/images/gallery/g17.webp'
   ];
 
   // Auto-advance carousel

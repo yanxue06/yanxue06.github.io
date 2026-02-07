@@ -6,16 +6,18 @@ export default function ScrollArrow() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      // Hide the component after scrolling 100px
-      if (window.scrollY > 50) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsVisible(window.scrollY <= 50);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

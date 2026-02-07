@@ -11,7 +11,7 @@ const projectsData = [
   {
     title: "Flux",
     description: "A bi-directional WebSocket bridge that tunnels local LLM runtimes to iMessage, enabling **6,000+** users to deploy production agents in under **5 seconds**. Hit **#1 Product of the Day** on Product Hunt",
-    image: "/images/projects/flux.png",
+    image: "/images/projects/flux.webp",
     imageFit: "contain",
     imageBg: "#6382E2",
     tags: ["TypeScript", "React", "TailwindCSS", "PostgreSQL", "WebSockets"],
@@ -20,21 +20,21 @@ const projectsData = [
   {
     title: "Git-semantic search",
     description: "Natural language git history search reaching **850+** users, searching **10K+** commits in under **100ms** using BERT tokenization and cosine similarity with zero API dependencies",
-    image: "/images/projects/git-semantic-search.png",
+    image: "/images/projects/git-semantic-search.webp",
     tags: ["Rust", "BGE Embeddings", "Vector Search"],
     link: "https://github.com/yanxue06/git-semantic-search",
   },
   {
     title: "LinkCom",
     description: "A bidirectional communication system bridging the hard of hearing and society using STM32 microcontrollers, an LCD, a keypad, and GPIO signals for sending and receiving predefined messages",
-    image: "/images/projects/LinkCom.png",
+    image: "/images/projects/LinkCom.webp",
     tags: ["STM32", "C"],
     link: "https://github.com/yanxue06/LinkCom",
   },
   {
     title: "Marillac Place",
     description: "A full-stack task management platform for Marillac Place NPO serving **28** homeless women, with a GraphQL API and automated resident record tracking",
-    image: "/images/projects/marillac.png",
+    image: "/images/projects/marillac.webp",
     tags: ["TypeScript", "React", "GraphQL", "PostgreSQL", "Docker"],
     link: "https://github.com/uwblueprint/marillac-place",
   },
@@ -61,7 +61,7 @@ const parseDescription = (text) => {
 };
 
 // Single project card component
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = React.memo(({ project, index }) => {
   const colorAccent = accentColors[index % accentColors.length];
 
   return (
@@ -290,7 +290,7 @@ const ProjectCard = ({ project, index }) => {
       </Card.Root>
     </motion.div>
   );
-};
+});
 
 // Main Projects component
 const ProjectBox = () => {

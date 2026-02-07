@@ -12,7 +12,7 @@ const homeLocation = {
   lng: -123.1207,
   label: "Vancouver, BC 🏠",
   isHome: true,
-  images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+  images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
 };
 
 // School location - Waterloo, Ontario
@@ -21,7 +21,7 @@ const schoolLocation = {
   lng: -80.5204,
   label: "Waterloo, ON 🎓",
   isSchool: true,
-  images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+  images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
 };
 
 // Travel destinations
@@ -33,7 +33,7 @@ const myTrips = [
     label: "Big Island, Hawaii",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 21.3069,
@@ -41,7 +41,7 @@ const myTrips = [
     label: "Honolulu, Hawaii",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 20.7984,
@@ -49,7 +49,7 @@ const myTrips = [
     label: "Maui, Hawaii",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   // Caribbean & Mexico
   {
@@ -58,7 +58,7 @@ const myTrips = [
     label: "Cuba",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 21.1619,
@@ -66,7 +66,7 @@ const myTrips = [
     label: "Cancun, Mexico",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   // UK
   {
@@ -75,7 +75,7 @@ const myTrips = [
     label: "London, UK",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   // Ontario, Canada
   {
@@ -84,7 +84,7 @@ const myTrips = [
     label: "London, Ontario",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 43.8561,
@@ -92,7 +92,7 @@ const myTrips = [
     label: "Markham, Ontario",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 43.6532,
@@ -100,7 +100,7 @@ const myTrips = [
     label: "Toronto, Ontario",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   // Europe
   {
@@ -109,7 +109,7 @@ const myTrips = [
     label: "Rome, Italy",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 48.8566,
@@ -117,7 +117,7 @@ const myTrips = [
     label: "Paris, France",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 41.3874,
@@ -125,7 +125,7 @@ const myTrips = [
     label: "Barcelona, Spain",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 38.7223,
@@ -133,7 +133,7 @@ const myTrips = [
     label: "Lisbon, Portugal",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 37.5994,
@@ -141,7 +141,7 @@ const myTrips = [
     label: "Sicily, Italy",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   // China
   {
@@ -150,7 +150,7 @@ const myTrips = [
     label: "Hangzhou, China",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 31.8206,
@@ -158,7 +158,7 @@ const myTrips = [
     label: "Hefei, China",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 22.5431,
@@ -166,7 +166,7 @@ const myTrips = [
     label: "Shenzhen, China",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   },
   {
     lat: 31.2304,
@@ -174,7 +174,7 @@ const myTrips = [
     label: "Shanghai, China",
     color: "#00f3ff",
     size: 1.2,
-    images: ["/images/gallery/g1.png", "/images/gallery/g2.png", "/images/gallery/g3.png"]
+    images: ["/images/gallery/g1.webp", "/images/gallery/g2.webp", "/images/gallery/g3.webp"]
   }
 ];
 
@@ -185,8 +185,9 @@ export default function TravelGlobe() {
   const [globeReady, setGlobeReady] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 650, height: 650 });
 
-  // Handle resize
+  // Handle resize with debounce
   useEffect(() => {
+    let resizeTimer;
     const updateDimensions = () => {
       const width = window.innerWidth;
       if (width <= 480) {
@@ -198,9 +199,17 @@ export default function TravelGlobe() {
       }
     };
     
+    const debouncedResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateDimensions, 150);
+    };
+
     updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    window.addEventListener('resize', debouncedResize);
+    return () => {
+      window.removeEventListener('resize', debouncedResize);
+      clearTimeout(resizeTimer);
+    };
   }, []);
 
   // Auto-rotate the globe

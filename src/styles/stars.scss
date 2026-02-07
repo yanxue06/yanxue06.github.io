@@ -27,6 +27,8 @@
     --star-width: calc(var(--star-tail-length) / 6);
     --fall-duration: 5s;
     --tail-fade-duration: var(--fall-duration);
+    will-change: transform, opacity;
+    contain: layout style;
   
     position: absolute;
     top: var(--top-offset);

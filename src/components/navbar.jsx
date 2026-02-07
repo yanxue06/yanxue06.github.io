@@ -6,18 +6,23 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrollY(window.scrollY);
-
-      // Toggle the 'scrolled' class on the body
-      if (window.scrollY > 50) {
-        document.body.classList.add("scrolled");
-      } else {
-        document.body.classList.remove("scrolled");
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          if (window.scrollY > 50) {
+            document.body.classList.add("scrolled");
+          } else {
+            document.body.classList.remove("scrolled");
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

@@ -67,7 +67,7 @@ const experiences = [
 
 
 
-const DescriptionBlock = ({ description }) => {
+const DescriptionBlock = React.memo(({ description }) => {
   const parseDescription = (text) => {
     // Split by newlines to handle bullet points
     const lines = text.split('\n').filter(line => line.trim());
@@ -225,10 +225,10 @@ const DescriptionBlock = ({ description }) => {
       {parseDescription(description)}
     </div>
   );
-};
+});
 
 
-const TimelineEntry = React.forwardRef(({ year, dateRange, company, role, location, description, images, colorAccent, index, ...props }, ref) => {
+const TimelineEntry = React.memo(React.forwardRef(({ year, dateRange, company, role, location, description, images, colorAccent, index, ...props }, ref) => {
   return (
     <motion.div
       ref={ref}
@@ -441,7 +441,7 @@ const TimelineEntry = React.forwardRef(({ year, dateRange, company, role, locati
       </Card.Root>
     </motion.div>
   );
-});
+}));
 
 const TimelineContainer = ({ children }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -451,20 +451,25 @@ const TimelineContainer = ({ children }) => {
   const entryRefs = useRef([]);
 
   useEffect(() => {
+    let scrollTicking = false;
     const handleScroll = () => {
-      if (timelineRef.current) {
-        const rect = timelineRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const timelineHeight = rect.height;
-        
-        // Calculate scroll progress within the timeline
-        const scrollTop = -rect.top;
-        const viewportCenter = windowHeight / 2;
-        const progress = Math.max(0, Math.min(1, (scrollTop + viewportCenter) / timelineHeight));
-        
-        setScrollProgress(progress);
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          if (timelineRef.current) {
+            const rect = timelineRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const timelineHeight = rect.height;
+            const scrollTop = -rect.top;
+            const viewportCenter = windowHeight / 2;
+            const progress = Math.max(0, Math.min(1, (scrollTop + viewportCenter) / timelineHeight));
+            setScrollProgress(progress);
+          }
+          scrollTicking = false;
+        });
+        scrollTicking = true;
       }
     };
+
     const observerOptions = {
       threshold: 0.5,
       rootMargin: "-50% 0px -50% 0px"
@@ -477,37 +482,42 @@ const TimelineContainer = ({ children }) => {
           setActiveEntryIndex(index);
         }
       });
-          }, observerOptions);
+    }, observerOptions);
 
     entryRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
+
+    let resizeTimer;
     const updateDotPositions = () => {
       const positions = entryRefs.current.map((ref, index) => {
         if (ref && timelineRef.current) {
           const entryRect = ref.getBoundingClientRect();
           const timelineRect = timelineRef.current.getBoundingClientRect();
-          // Align with card padding (20px) + half the logo height (20px) = 40px
-          // But we need to account for the actual rendered position
           return entryRect.top - timelineRect.top + 30;
         }
-        // Fallback: initial padding + (index * approximate entry height)
         return 35 + (index * 180);
       });
       setDotPositions(positions);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", updateDotPositions);
+    const debouncedResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateDotPositions, 150);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", debouncedResize);
     handleScroll();
     setTimeout(updateDotPositions, 100);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", updateDotPositions);
+      window.removeEventListener("resize", debouncedResize);
+      clearTimeout(resizeTimer);
       observer.disconnect();
     };
-      }, []);
+  }, []);
   const getDotPosition = (index) => {
     return dotPositions[index] || (35 + (index * 180));
   };

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getNowPlaying, getRecentlyPlayed } from '../utils/spotify';
 import { motion } from 'framer-motion';
 import '../styles/spotify.css';
@@ -7,30 +7,38 @@ export default function SpotifyPlayer() {
   const [track, setTrack] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [loading, setLoading] = useState(true);
+  const containerRef = useRef(null);
+  const isVisibleRef = useRef(true);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting; },
+      { threshold: 0 }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const fetchSpotifyData = async () => {
+      if (!isVisibleRef.current) return;
       try {
-        // First, try to get currently playing track
         const nowPlaying = await getNowPlaying();
 
         if (nowPlaying.isPlaying) {
           setTrack(nowPlaying);
           setIsPlaying(true);
         } else {
-          // Always fetch recently played to show last listened song
           const recentlyPlayed = await getRecentlyPlayed();
           if (recentlyPlayed.hasData) {
             setTrack(recentlyPlayed);
             setIsPlaying(false);
           } else {
-            // Even if recently played fails, keep the last known track
             setIsPlaying(false);
           }
         }
       } catch (error) {
         console.error('Error fetching Spotify data:', error);
-        // Keep showing the last track even if there's an error
       } finally {
         setLoading(false);
       }
@@ -38,7 +46,7 @@ export default function SpotifyPlayer() {
 
     fetchSpotifyData();
 
-    // Refresh every 30 seconds
+    // Refresh every 30 seconds, but only when visible
     const interval = setInterval(fetchSpotifyData, 30000);
 
     return () => clearInterval(interval);
@@ -46,7 +54,7 @@ export default function SpotifyPlayer() {
 
   if (loading) {
     return (
-      <div className="spotify-player loading">
+      <div ref={containerRef} className="spotify-player loading">
         <div className="spotify-loading-spinner"></div>
       </div>
     );
@@ -55,7 +63,7 @@ export default function SpotifyPlayer() {
   // If no track data at all, still show loading instead of "no activity"
   if (!track || (!track.title)) {
     return (
-      <div className="spotify-player loading">
+      <div ref={containerRef} className="spotify-player loading">
         <div className="spotify-loading-spinner"></div>
       </div>
     );

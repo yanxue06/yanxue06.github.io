@@ -1,30 +1,32 @@
-import React from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "../styles/home.css";
 import "../styles/navbar.css";
 import { motion } from "framer-motion";
 import TypeWriter from "./typewriter";
 import "../styles/stars.scss";
 
-export default function intro() {
-  // Create a responsive array of stars
-  const getStars = () => {
-    // Default number for larger screens
-    const defaultStars = 15;
-    // Smaller number for mobile screens
-    const mobileStars = 8;
+export default function Intro() {
+  const [isMobile, setIsMobile] = useState(false);
 
-    return Array(window.innerWidth > 750 ? defaultStars : mobileStars)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 750);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const stars = useMemo(() => {
+    const count = isMobile ? 8 : 15;
+    return Array(count)
       .fill()
       .map((_, i) => (
         <div
           key={i}
           className="star"
-          style={{
-            color: "white",
-          }}
+          style={{ color: "white" }}
         ></div>
       ));
-  };
+  }, [isMobile]);
 
   return (
     <section id="home" className="p1">
@@ -34,7 +36,7 @@ export default function intro() {
           color: "white",
         }}
       >
-        {getStars()}
+        {stars}
       </div>
 
       <motion.div

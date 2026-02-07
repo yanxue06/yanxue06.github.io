@@ -19,5 +19,17 @@ export default defineConfig({
     browserField: true,
     mainFields: ['browser', 'module', 'main'],
     conditions: ['browser', 'default']
-  }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          motion: ['framer-motion'],
+          ui: ['@chakra-ui/react'],
+        },
+      },
+    },
+    minify: 'esbuild',
+  },
 })
