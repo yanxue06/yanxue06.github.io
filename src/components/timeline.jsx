@@ -5,6 +5,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
 const logoPlaceholders = {
+  Photon: "/images/logos/photon.png",
   BitGo: "/images/logos/bitgo.jpeg",
   Blueprint: "/images/logos/blueprint.png",
   HongMall: "/images/logos/hongmall.png",
@@ -14,13 +15,23 @@ const logoPlaceholders = {
 const experiences = [
   {
     year: "2025",
-    dateRange: "Sep 2025 - Present",
+    dateRange: "Dec 2025 - Present",
+    company: "Photon",
+    role: "Software Engineer Intern",
+    location: "San Francisco, CA",
+    description: "Architected BuildSpace CI/CD framework for automated deployments, engineered Rust reverse-tunneling for NAT traversal, and built Go fleet dashboard for Mac provisioning",
+    images: [logoPlaceholders["Photon"]],
+    colorAccent: "#E8A84A", // Gold
+  },
+  {
+    year: "2025",
+    dateRange: "Sep 2025 - Dec 2025",
     company: "BitGo",
     role: "Software Engineer Intern",
     location: "Palo Alto, CA",
     description: "Working on the Developer Experience team, using Rust to ensure quality in BitGo's API specs",
     images: [logoPlaceholders["BitGo"]],
-    colorAccent: "#4A9FE8", // Deep blue
+    colorAccent: "#F06878", // Rose
   },
   {
     year: "2025",
@@ -30,7 +41,7 @@ const experiences = [
     location: "Waterloo, ON",
     description: "Building software for NPO Marrilac place that centralizes resident records and support daily tracking programs",
     images: [logoPlaceholders["Blueprint"]],
-    colorAccent: "#5CB5FF", // Bright blue
+    colorAccent: "#4ECDC4", // Teal
   },
   {
     year: "2025",
@@ -40,7 +51,7 @@ const experiences = [
     location: "Markham, ON",
     description: "Built a customer service chatbot to serve 1M+ users and developed a centralized interface for controlling warehouse robots",
     images: [logoPlaceholders["HongMall"]],
-    colorAccent: "#70C5FF", // Sky blue
+    colorAccent: "#5B8DEF", // Blue
   },
   {
     year: "2023",
@@ -50,7 +61,7 @@ const experiences = [
     location: "Vancouver, BC",
     description: "Developed the company website and created tools for billing and inventory management",
     images: [logoPlaceholders["Skynet Security System Ltd."]],
-    colorAccent: "#85D5FF", // Light sky blue
+    colorAccent: "#A78BFA", // Lavender
   },
 ];
 
@@ -58,6 +69,84 @@ const experiences = [
 
 const DescriptionBlock = ({ description }) => {
   const parseDescription = (text) => {
+    // Split by newlines to handle bullet points
+    const lines = text.split('\n').filter(line => line.trim());
+    
+    if (lines.length > 1) {
+      // Multiple lines - render as list
+      return lines.map((line, lineIndex) => {
+        const parts = [];
+        let currentIndex = 0;
+        let partIndex = 0;
+
+        const boldRegex = /\*\*(.*?)\*\*/g;
+        const italicRegex = /\*(.*?)\*/g;
+
+        const allMatches = [];
+        let match;
+        while ((match = boldRegex.exec(line)) !== null) {
+          allMatches.push({
+            type: 'bold',
+            start: match.index,
+            end: match.index + match[0].length,
+            content: match[1]
+          });
+        }
+
+        const textWithoutBold = line.replace(/\*\*(.*?)\*\*/g, (match, content) => '•'.repeat(match.length));
+        while ((match = italicRegex.exec(textWithoutBold)) !== null) {
+          allMatches.push({
+            type: 'italic',
+            start: match.index,
+            end: match.index + match[0].length,
+            content: line.slice(match.index + 1, match.index + match[0].length - 1)
+          });
+        }
+
+        allMatches.sort((a, b) => a.start - b.start);
+
+        allMatches.forEach((matchObj) => {
+          if (currentIndex < matchObj.start) {
+            parts.push(
+              <span key={`${lineIndex}-${partIndex++}`}>
+                {line.slice(currentIndex, matchObj.start)}
+              </span>
+            );
+          }
+          if (matchObj.type === 'bold') {
+            parts.push(
+              <strong key={`${lineIndex}-${partIndex++}`} style={{ color: "#65B5FF" }}>
+                {matchObj.content}
+              </strong>
+            );
+          } else if (matchObj.type === 'italic') {
+            parts.push(
+              <em key={`${lineIndex}-${partIndex++}`} style={{ color: "#FFA94D" }}>
+                {matchObj.content}
+              </em>
+            );
+          }
+
+          currentIndex = matchObj.end;
+        });
+        if (currentIndex < line.length) {
+          parts.push(
+            <span key={`${lineIndex}-${partIndex++}`}>
+              {line.slice(currentIndex)}
+            </span>
+          );
+        }
+
+        return (
+          <div key={lineIndex} style={{ marginBottom: "8px", display: "flex", alignItems: "flex-start" }}>
+            <span style={{ marginRight: "8px", flexShrink: 0 }}>{line.startsWith('•') ? '' : '•'}</span>
+            <span>{parts.length > 0 ? parts : line.replace(/^•\s*/, '')}</span>
+          </div>
+        );
+      });
+    }
+    
+    // Single line - original parsing
     const parts = [];
     let currentIndex = 0;
     let partIndex = 0;
@@ -74,7 +163,7 @@ const DescriptionBlock = ({ description }) => {
         end: match.index + match[0].length,
         content: match[1]
       });
-          }
+    }
 
     const textWithoutBold = text.replace(/\*\*(.*?)\*\*/g, (match, content) => '•'.repeat(match.length));
     while ((match = italicRegex.exec(textWithoutBold)) !== null) {
@@ -84,7 +173,7 @@ const DescriptionBlock = ({ description }) => {
         end: match.index + match[0].length,
         content: text.slice(match.index + 1, match.index + match[0].length - 1)
       });
-          }
+    }
 
     allMatches.sort((a, b) => a.start - b.start);
 
@@ -124,7 +213,7 @@ const DescriptionBlock = ({ description }) => {
   };
 
   return (
-    <p
+    <div
       style={{
         color: "rgba(255, 255, 255, 0.8)",
         fontSize: "0.85rem",
@@ -134,7 +223,7 @@ const DescriptionBlock = ({ description }) => {
       }}
     >
       {parseDescription(description)}
-    </p>
+    </div>
   );
 };
 
@@ -182,16 +271,16 @@ const TimelineEntry = React.forwardRef(({ year, dateRange, company, role, locati
             inset 0 -1px 1px rgba(0,0,0,0.2)
           `,
 
-          // Liquid glass shimmer effect with unique positioning and more visible tinting
+          // Liquid glass shimmer effect with consistent tinting
           "&::before": {
             content: "''",
             position: "absolute",
             inset: 0,
             pointerEvents: "none",
             background: `
-              radial-gradient(700px 300px at ${index % 2 === 0 ? '-8%' : '108%'} -10%, ${colorAccent}50 0%, transparent 50%),
-              radial-gradient(550px 250px at ${index % 2 === 0 ? '112%' : '-12%'} 105%, rgba(255,255,255,0.16) 0%, transparent 50%),
-              linear-gradient(${135 + (index * 15)}deg, transparent 0%, ${colorAccent}15 35%, transparent 65%)
+              radial-gradient(600px 250px at -5% -10%, ${colorAccent}45 0%, transparent 50%),
+              radial-gradient(500px 200px at 110% 110%, rgba(255,255,255,0.11) 0%, transparent 50%),
+              linear-gradient(145deg, transparent 0%, ${colorAccent}18 40%, transparent 70%)
             `,
             opacity: 1,
           },
@@ -453,6 +542,7 @@ const TimelineContainer = ({ children }) => {
           top: "40px",
           bottom: "40px",
           width: "2px",
+          transform: "translateX(-50%)",
           backgroundColor: "rgba(220, 229, 251, 0.3)",
           zIndex: 1,
           "@media (max-width: 968px)": {
@@ -474,6 +564,7 @@ const TimelineContainer = ({ children }) => {
           left: "40px",
           top: "40px",
           width: "2px",
+          transform: "translateX(-50%)",
           height: `${scrollProgress * 100}%`,
           maxHeight: "calc(100% - 80px)",
           backgroundColor: "rgba(101, 181, 255, 0.6)",

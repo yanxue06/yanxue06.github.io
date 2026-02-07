@@ -41,7 +41,7 @@ export default function Navbar() {
 
   const openResume = (e) => {
     e.preventDefault();
-    window.location.href = "/resume";
+    window.open("/resume/YanXueExternalSWE (5).pdf", "_blank");
     setIsMobileMenuOpen(false);
   };
 
@@ -110,8 +110,10 @@ export default function Navbar() {
           </a>
 
           <a
-            href="/resume"
+            href="/resume/YanXueResume.pdf"
             className="navbar-link"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Resume
           </a>
@@ -153,9 +155,11 @@ export default function Navbar() {
           </a>
 
           <a
-            href="/resume"
+            href="/resume/YanXueExternalSWE (5).pdf"
             className="navbar-link"
             onClick={openResume}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Resume
           </a>

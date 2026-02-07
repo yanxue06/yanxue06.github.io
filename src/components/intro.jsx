@@ -124,7 +124,7 @@ export default function intro() {
                   e.target.style.boxShadow = "none";
                 }}
                 onClick={() =>
-                  window.location.href = "/resume"
+                  window.open("/resume/YanXueExternalSWE (5).pdf", "_blank")
                 }
               >
                 Resume

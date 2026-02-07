@@ -6,50 +6,38 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
 
-// Project data - only non-commented projects
+// Project data
 const projectsData = [
   {
+    title: "Flux",
+    description: "A bi-directional WebSocket bridge that tunnels local LLM runtimes to iMessage, enabling **6,000+** users to deploy production agents in under **5 seconds**. Hit **#1 Product of the Day** on Product Hunt",
+    image: "/images/projects/flux.png",
+    imageFit: "contain",
+    imageBg: "#6382E2",
+    tags: ["TypeScript", "React", "TailwindCSS", "PostgreSQL", "WebSockets"],
+    link: "https://github.com/photon-hq/flux",
+  },
+  {
     title: "Git-semantic search",
-    description: "Search your git history using natural language - find commits by what they mean, not just what they say. Currently with 770+ users",
+    description: "Natural language git history search reaching **850+** users, searching **10K+** commits in under **100ms** using BERT tokenization and cosine similarity with zero API dependencies",
     image: "/images/projects/git-semantic-search.png",
-    tags: ["Rust", "Hugging Face"],
+    tags: ["Rust", "BGE Embeddings", "Vector Search"],
     link: "https://github.com/yanxue06/git-semantic-search",
   },
   {
-    title: "Drug Sensescence Forecasting",
-    description: "This project explores the lifespan extension potential of chemical compounds using machine learning. Under the mentorship of Dr. Michał Koziarski, we are developing predictive models to assess compounds' effects on longevity.",
-    image: "/images/projects/drugforecast.png",
-    tags: ["Python", "Pandas", "Scikit-learn", "Matplotlib", "Seaborn"],
-    link: "https://github.com/yanxue06/ML-Age",
-  },
-  {
-    title: "JobBot",
-    description: "Job Scraper with AI integration for increasing the efficiency of the job search process. It scrapes websites for key details then uses LLama to summarize the posting. The application then saves all scraped data into an Excel file.",
-    image: "/images/projects/jobbot.png",
-    tags: ["Python", "Selenium", "Pandas", "Llama", "React"],
-    link: "https://github.com/yanxue06/jobbot",
-  },
-  {
-    title: "Comparisum",
-    description: "Comparisum is a platform that summarizes chunks of amazon reviews for products. It provides top pros and cons, considering number of helpful votes and overall rating, ensuring that users can make informed decision purchases.",
-    image: "/images/projects/comparisum.png",
-    tags: ["Python", "Llama", "AWS", "React", "SQL"],
-    link: "https://github.com/geashley/watAI",
-  },
-  {
     title: "LinkCom",
-    description: "LinkCom serves the purpose of bridging the communication troubles between the hard of hearing and society. This project implements a bidirectional communication system using STM32 microcontrollers, an LCD, a keypad, and GPIO signals. The system enables users to send and receive predefined messages through a simple interface.",
+    description: "A bidirectional communication system bridging the hard of hearing and society using STM32 microcontrollers, an LCD, a keypad, and GPIO signals for sending and receiving predefined messages",
     image: "/images/projects/LinkCom.png",
     tags: ["STM32", "C"],
-    link: "https://github.com/yanxue06/LinkCom.png",
+    link: "https://github.com/yanxue06/LinkCom",
   },
-  {    
-    title: "Portfolio",
-    description: "This portfolio was one of my first projects with React. From the designing on Figma and then translating everything to code, the whole process was so fun!",
-    image: "/images/projects/portfolio.png",
-    tags: ["React", "HTML", "CSS", "JavaScript", "Figma"],
-    link: "https://github.com/yanxue06/portfolio.png",
-  }
+  {
+    title: "Marillac Place",
+    description: "A full-stack task management platform for Marillac Place NPO serving **28** homeless women, with a GraphQL API and automated resident record tracking",
+    image: "/images/projects/marillac.png",
+    tags: ["TypeScript", "React", "GraphQL", "PostgreSQL", "Docker"],
+    link: "https://github.com/uwblueprint/marillac-place",
+  },
 ];
 
 // Blue color palette with more visible variations
@@ -60,6 +48,17 @@ const accentColors = [
   "#85D5FF", // Light sky blue
   "#9AE0FF", // Pale blue
 ];
+
+// Parse **bold** in description text
+const parseDescription = (text) => {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i} style={{ color: "#65B5FF" }}>{part.slice(2, -2)}</strong>;
+    }
+    return <span key={i}>{part}</span>;
+  });
+};
 
 // Single project card component
 const ProjectCard = ({ project, index }) => {
@@ -151,7 +150,7 @@ const ProjectCard = ({ project, index }) => {
           css={{
             width: "100%",
             height: "280px",
-            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            backgroundColor: project.imageBg || "rgba(255, 255, 255, 0.05)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -166,7 +165,7 @@ const ProjectCard = ({ project, index }) => {
             style={{
               width: "100%",
               height: "100%",
-              objectFit: "contain",
+              objectFit: project.imageFit || "contain",
               objectPosition: "center",
             }}
           />
@@ -207,7 +206,7 @@ const ProjectCard = ({ project, index }) => {
               flex: 1,
             }}
           >
-            {project.description}
+            {parseDescription(project.description)}
           </Box>
 
           {/* Tech Tags */}
