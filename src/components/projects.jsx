@@ -336,16 +336,16 @@ const ProjectBox = () => {
       {/* Projects Grid */}
       <Box
         css={{
-          maxWidth: "1400px",
+          maxWidth: "1000px",
           margin: "0 auto",
           padding: "0 20px",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
-          gap: "40px",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "32px",
           
           "@media (max-width: 768px)": {
             gridTemplateColumns: "1fr",
-            gap: "32px",
+            gap: "28px",
             padding: "0 16px",
           },
           
