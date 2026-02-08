@@ -160,7 +160,7 @@ export default function Navbar() {
           </a>
 
           <a
-            href="/resume/YanXueExternalSWE (5).pdf"
+            href="/resume/YanXueResume.pdf"
             className="navbar-link"
             onClick={openResume}
             target="_blank"

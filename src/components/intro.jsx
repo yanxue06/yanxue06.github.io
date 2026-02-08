@@ -126,7 +126,7 @@ export default function Intro() {
                   e.target.style.boxShadow = "none";
                 }}
                 onClick={() =>
-                  window.open("/resume/YanXueExternalSWE (5).pdf", "_blank")
+                  window.open("/resume/YanXueResume.pdf", "_blank")
                 }
               >
                 Resume
