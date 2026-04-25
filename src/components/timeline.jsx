@@ -388,7 +388,7 @@ const TimelineEntry = React.memo(React.forwardRef(({ year, dateRange, company, r
                 style={{
                   fontSize: "1.1rem",
                   fontWeight: "500",
-                  color: "#65B5FF",
+                  color: colorAccent,
                   marginBottom: "0",
                   lineHeight: "1.3",
                 }}
@@ -641,37 +641,71 @@ const TimelineContainer = ({ children }) => {
 
 const TimeLine = () => {
   return (
-    <section style={{ width: "100%", padding: "50px 0"}}>
+    <section
+      style={{
+        // Full-bleed escape from the parent's max-w-[1000px] wrapper.
+        position: "relative",
+        width: "100vw",
+        marginLeft: "calc(-50vw + 50%)",
+        padding: "clamp(60px, 8vw, 110px) 0",
+        background:
+          "radial-gradient(1100px 500px at 50% -10%, rgba(101,181,255,0.06), transparent 60%)",
+      }}
+    >
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.7 }}
         viewport={{ once: true, amount: 0.2 }}
-        style={{ textAlign: "center", marginBottom: "35px" }}
+        style={{
+          textAlign: "center",
+          maxWidth: "780px",
+          margin: "0 auto clamp(40px, 5vw, 64px) auto",
+          padding: "0 clamp(16px, 4vw, 32px)",
+        }}
       >
         <h1
           style={{
-            fontSize: "clamp(2rem, 5vw, 2.8rem)",
+            fontSize: "clamp(2.2rem, 5vw, 3rem)",
             fontWeight: "bold",
             color: "rgb(196, 223, 235)",
-            marginBottom: "14px",
+            marginBottom: "12px",
+            lineHeight: 1.1,
           }}
         >
-          Work <span style={{
-                background: "linear-gradient(90deg, #63d0f8, #65b5ff)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}>Experience</span>
+          Work{" "}
+          <span
+            style={{
+              background: "linear-gradient(90deg, #63d0f8, #65b5ff)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Experience
+          </span>
         </h1>
-      
+        <p
+          style={{
+            color: "rgba(255,255,255,0.65)",
+            fontSize: "clamp(0.95rem, 1.05vw, 1.1rem)",
+            lineHeight: 1.6,
+            margin: 0,
+            width: "100%",
+            textAlign: "center",
+          }}
+        >
+          Internships and team work, most recent first.
+        </p>
       </motion.div>
 
-      <div style={{ 
-        maxWidth: "1000px", 
-        margin: "0 auto", 
-        padding: "0 18px",
-        width: "100%" 
-      }}>
+      <div
+        style={{
+          maxWidth: "1080px",
+          margin: "0 auto",
+          padding: "0 clamp(16px, 4vw, 32px)",
+          width: "100%",
+        }}
+      >
         <TimelineContainer>
           {experiences.map((exp, index) => (
             <TimelineEntry

@@ -39,6 +39,18 @@ const projectsData = [
     accent: "#5be3a4",
   },
   {
+    title: "Git-semantic search",
+    description: "Natural-language git history search reaching **850+** users, searching **10K+** commits in under **100ms** with BERT tokenization and cosine similarity — zero API dependencies.",
+    image: "/images/projects/git-semantic-search.webp",
+    imageFit: "cover",
+    imageBg: "#0b1220",
+    tags: ["Rust", "BGE Embeddings", "Vector Search"],
+    link: "https://github.com/yanxue06/git-semantic-search",
+    span: 8,
+    featured: true,
+    accent: "#65B5FF",
+  },
+  {
     title: "BuildSpace",
     description: "Reusable GitHub Actions blocks and release workflows for fast-shipping teams — point a workflow at a Rust, TypeScript, Go, or Swift repo, hand it a few secrets, and ship.",
     image: "/images/projects/buildspace.png",
@@ -50,16 +62,37 @@ const projectsData = [
     accent: "#8b86ff",
   },
   {
-    title: "Git-semantic search",
-    description: "Natural-language git history search reaching **850+** users, searching **10K+** commits in under **100ms** with BERT tokenization and cosine similarity — zero API dependencies.",
-    image: "/images/projects/git-semantic-search.webp",
+    title: "pr-search",
+    description: "A semantic search engine for **GitHub pull requests** — embeds PR titles + diffs with ONNX BGE, indexes them locally, and ships with a Ratatui TUI for instant fuzzy retrieval across thousands of PRs.",
+    image: "/images/projects/pr-search.png",
     imageFit: "cover",
-    imageBg: "#0b1220",
-    tags: ["Rust", "BGE Embeddings", "Vector Search"],
-    link: "https://github.com/yanxue06/git-semantic-search",
-    span: 8,
-    featured: true,
-    accent: "#65B5FF",
+    imageBg: "#1a0d2e",
+    tags: ["Rust", "ONNX Runtime", "Ratatui", "Vector Search"],
+    link: "https://github.com/yanxue06/pr-search",
+    span: 4,
+    accent: "#c45cff",
+  },
+  {
+    title: "Helios",
+    description: "A real-time meeting tool that turns spoken discussions into **interactive knowledge graphs**, surfacing decisions, owners, and action items so nothing gets lost in conversation.",
+    image: "/images/projects/helios.png",
+    imageFit: "cover",
+    imageBg: "#231100",
+    tags: ["TypeScript", "React", "Knowledge Graphs", "LLMs"],
+    link: "https://github.com/yanxue06/Helios",
+    span: 4,
+    accent: "#ffb96a",
+  },
+  {
+    title: "Flappy Code",
+    description: "A tiny **Flappy Bird overlay for macOS** that floats on top of your editor — so when the LLM is spinning, you can flap through a few pipes instead of staring at a spinner. One file, zero dependencies.",
+    image: "/images/projects/flappycode.png",
+    imageFit: "cover",
+    imageBg: "#0d1117",
+    tags: ["Python", "tkinter", "macOS"],
+    link: "https://github.com/yanxue06/flappycode",
+    span: 4,
+    accent: "#3ec97c",
   },
   {
     title: "LinkCom",
@@ -407,24 +440,6 @@ const ProjectBox = () => {
           padding: "0 clamp(16px, 4vw, 32px)",
         }}
       >
-        <Box
-          css={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            padding: "6px 14px",
-            borderRadius: "999px",
-            background: "rgba(101, 181, 255, 0.08)",
-            border: "1px solid rgba(101, 181, 255, 0.25)",
-            color: "#9ed5ff",
-            fontSize: "0.78rem",
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            marginBottom: "18px",
-          }}
-        >
-          Selected Work
-        </Box>
         <h1
           style={{
             fontSize: "clamp(2.2rem, 5vw, 3rem)",
