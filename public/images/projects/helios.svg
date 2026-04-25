@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Helios">
+  <defs>
+    <linearGradient id="hBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#231100"/>
+      <stop offset="55%" stop-color="#3a1a05"/>
+      <stop offset="100%" stop-color="#150900"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd17a" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#ff9a3c" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ff6a1f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hAccent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffd17a"/>
+      <stop offset="100%" stop-color="#ff8a4c"/>
+    </linearGradient>
+    <pattern id="hGrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+    <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="800" fill="url(#hBg)"/>
+  <rect width="1600" height="800" fill="url(#hGrid)"/>
+
+  <!-- The "sun" radial behind the graph -->
+  <circle cx="800" cy="430" r="430" fill="url(#sun)"/>
+
+  <!-- Knowledge graph: a central "Decision" node with related concept nodes -->
+  <g stroke="#ffd17a" stroke-opacity="0.55" stroke-width="2" fill="none">
+    <line x1="800" y1="430" x2="540" y2="300"/>
+    <line x1="800" y1="430" x2="1080" y2="280"/>
+    <line x1="800" y1="430" x2="500" y2="540"/>
+    <line x1="800" y1="430" x2="1100" y2="560"/>
+    <line x1="800" y1="430" x2="800" y2="220"/>
+    <line x1="800" y1="430" x2="800" y2="660"/>
+    <line x1="540" y1="300" x2="800" y2="220"/>
+    <line x1="1080" y1="280" x2="800" y2="220"/>
+    <line x1="500" y1="540" x2="800" y2="660"/>
+    <line x1="1100" y1="560" x2="800" y2="660"/>
+  </g>
+
+  <!-- Nodes -->
+  <g>
+    <!-- center node -->
+    <g transform="translate(800 430)">
+      <circle r="56" fill="#ff8a4c" filter="url(#nodeGlow)" opacity="0.55"/>
+      <circle r="38" fill="#ffd17a"/>
+      <circle r="38" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="2"/>
+      <text text-anchor="middle" y="6" font-family="Inter, ui-sans-serif, system-ui" font-size="14" font-weight="700" fill="#3a1a05">Decision</text>
+    </g>
+    <!-- side nodes -->
+    <g font-family="Inter, ui-sans-serif, system-ui" font-size="12" font-weight="600" fill="#3a1a05">
+      <g transform="translate(540 300)"><circle r="28" fill="#ffe6b3" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/><text text-anchor="middle" y="4">Owner</text></g>
+      <g transform="translate(1080 280)"><circle r="28" fill="#ffe6b3" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/><text text-anchor="middle" y="4">Risk</text></g>
+      <g transform="translate(500 540)"><circle r="28" fill="#ffe6b3" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/><text text-anchor="middle" y="4">Action</text></g>
+      <g transform="translate(1100 560)"><circle r="28" fill="#ffe6b3" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/><text text-anchor="middle" y="4">Topic</text></g>
+      <g transform="translate(800 220)"><circle r="28" fill="#ffe6b3" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/><text text-anchor="middle" y="4">Goal</text></g>
+      <g transform="translate(800 660)"><circle r="28" fill="#ffe6b3" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/><text text-anchor="middle" y="4">Date</text></g>
+    </g>
+
+    <!-- small floating dots -->
+    <g fill="#ffd17a" opacity="0.6">
+      <circle cx="380" cy="180" r="4"/>
+      <circle cx="1240" cy="180" r="4"/>
+      <circle cx="320" cy="660" r="4"/>
+      <circle cx="1280" cy="700" r="4"/>
+      <circle cx="240" cy="380" r="3"/>
+      <circle cx="1380" cy="420" r="3"/>
+    </g>
+  </g>
+
+  <!-- Title -->
+  <g font-family="Inter, ui-sans-serif, system-ui">
+    <text x="800" y="120" text-anchor="middle" font-size="58" font-weight="700" fill="#ffe6b3">Helios</text>
+    <text x="800" y="156" text-anchor="middle" font-size="20" fill="#ffd17a" opacity="0.8">meetings, mapped</text>
+  </g>
+</svg>
