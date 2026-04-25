@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="git-subtree-audit">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e2a1f"/>
+      <stop offset="55%" stop-color="#11402d"/>
+      <stop offset="100%" stop-color="#0a1f17"/>
+    </linearGradient>
+    <linearGradient id="branchA" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5be3a4"/>
+      <stop offset="100%" stop-color="#2bb47a"/>
+    </linearGradient>
+    <linearGradient id="branchB" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7ee9c8"/>
+      <stop offset="100%" stop-color="#3dd3a6"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5be3a4" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#5be3a4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7ee9c8" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#7ee9c8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="800" fill="url(#bg)"/>
+  <rect width="1600" height="800" fill="url(#grid)"/>
+
+  <!-- Soft glow blobs -->
+  <circle cx="220" cy="220" r="220" fill="url(#glowA)"/>
+  <circle cx="1380" cy="600" r="260" fill="url(#glowB)"/>
+
+  <!-- Branch A (source repo): straight horizontal with commits -->
+  <g>
+    <line x1="120" y1="280" x2="1480" y2="280" stroke="url(#branchA)" stroke-width="6" stroke-linecap="round"/>
+    <g fill="url(#branchA)">
+      <circle cx="180"  cy="280" r="14"/>
+      <circle cx="360"  cy="280" r="14"/>
+      <circle cx="540"  cy="280" r="14"/>
+      <circle cx="720"  cy="280" r="14"/>
+      <circle cx="900"  cy="280" r="14"/>
+      <circle cx="1080" cy="280" r="14"/>
+      <circle cx="1260" cy="280" r="14"/>
+      <circle cx="1440" cy="280" r="14"/>
+    </g>
+    <text x="120" y="240" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#9affd2" opacity="0.9">repo A · history preserved</text>
+  </g>
+
+  <!-- Curved bridges from A down into B (subtree merge) -->
+  <g fill="none" stroke="#5be3a4" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="6 8">
+    <path d="M 360 280 C 360 380, 540 460, 540 540"/>
+    <path d="M 720 280 C 720 380, 900 460, 900 540"/>
+    <path d="M 1080 280 C 1080 380, 1260 460, 1260 540"/>
+  </g>
+
+  <!-- Branch B (target repo, with subtree path) -->
+  <g>
+    <line x1="120" y1="540" x2="1480" y2="540" stroke="url(#branchB)" stroke-width="6" stroke-linecap="round"/>
+    <g fill="url(#branchB)">
+      <circle cx="180"  cy="540" r="14"/>
+      <circle cx="360"  cy="540" r="14"/>
+      <circle cx="540"  cy="540" r="14"/>
+      <circle cx="720"  cy="540" r="14"/>
+      <circle cx="900"  cy="540" r="14"/>
+      <circle cx="1080" cy="540" r="14"/>
+      <circle cx="1260" cy="540" r="14"/>
+      <circle cx="1440" cy="540" r="14"/>
+    </g>
+    <text x="120" y="600" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#bff5dc" opacity="0.9">repo B · sdk/  ✓ verified</text>
+  </g>
+
+  <!-- Center title and check badge -->
+  <g transform="translate(800 410)">
+    <circle r="56" fill="#0a1f17" stroke="#5be3a4" stroke-width="3"/>
+    <path d="M -22 2 L -6 18 L 24 -16" fill="none" stroke="#5be3a4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Title text -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="800" y="150" text-anchor="middle" font-size="56" font-weight="700" fill="#eafff5">git subtree-audit</text>
+    <text x="800" y="720" text-anchor="middle" font-size="22" fill="#7fd6a6" opacity="0.85">every commit accounted for · 0 missing</text>
+  </g>
+</svg>
